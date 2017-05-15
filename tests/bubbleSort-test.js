@@ -1,6 +1,11 @@
 import { expect } from 'chai';
 import bubbleSort from '../scripts/bubbleSort';
 
+// should move min number to front
+// should move max number to front (Math.max)
+// should sort large arrays
+// Copy lint
+
 describe('Bubble Sort', () => {
   it('Should be a function', () => {
     expect(bubbleSort).to.be.function;

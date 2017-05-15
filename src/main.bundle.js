@@ -113,21 +113,30 @@ exports.default = getRandomArray;
 "use strict";
 
 
-var _bubbleSort = __webpack_require__(0);
-
-var _bubbleSort2 = _interopRequireDefault(_bubbleSort);
-
 var _getRandomArray = __webpack_require__(1);
 
 var _getRandomArray2 = _interopRequireDefault(_getRandomArray);
 
+var _bubbleSort = __webpack_require__(0);
+
+var _bubbleSort2 = _interopRequireDefault(_bubbleSort);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var x = (0, _getRandomArray2.default)(100, 100);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//Empty Lines
+console.log('--------------------------------------------------------------------');
+console.log();
+console.log();
+
+var x = (0, _getRandomArray2.default)(5, 100);
 console.log(x);
 console.log(x.sort(function (a, b) {
   return a - b;
 }));
+
+console.log(Math.min.apply(Math, _toConsumableArray(x)));
 
 /***/ })
 /******/ ]);

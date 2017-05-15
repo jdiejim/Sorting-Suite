@@ -1,6 +1,13 @@
-import bubbleSort from '../scripts/bubbleSort';
 import getRandomArray from '../scripts/getRandomArray';
+import bubbleSort from '../scripts/bubbleSort';
 
-let x = getRandomArray(100, 100);
+//Empty Lines
+console.log('--------------------------------------------------------------------');
+console.log();
+console.log();
+
+let x = getRandomArray(5, 100);
 console.log(x);
 console.log(x.sort((a, b) => a - b));
+
+console.log(Math.min(...x));

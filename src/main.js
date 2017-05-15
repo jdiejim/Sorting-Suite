@@ -7,6 +7,7 @@ console.log();
 console.log();
 
 let x = getRandomArray(5, 100);
+
 console.log(x);
 console.log(x.sort((a, b) => a - b));
 

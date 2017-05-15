@@ -4,6 +4,7 @@ function getRandomNumber(max) {
 
 function getRandomArray(length, max) {
   let array = [];
+  
   for (let i = 0; i < length; i++) {
     array.push(getRandomNumber(max));
   }

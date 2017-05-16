@@ -1,28 +1,27 @@
 import { getRandomArray, getRandomLettersArray } from '../scripts/getRandomArray';
 import bubbleSort from '../scripts/bubbleSort';
 import insertionSort from '../scripts/insertionSort';
+import mergeSort from '../scripts/mergeSort';
 
 //Empty Lines
 console.log('--------------------------------------------------------------------');
 console.log();
 console.log();
+let array = [ 5, 2, 9, 8, 6, 7 ];
+let array2 = [ 2, 5, 6, 9, 8, 7 ];
 
-// let array = [5, 4, 2, 0, 1, 3];
-let array2 = [5, 4, 2, 0, 1, 3];
-// let array = getRandomArray(10, 100);
-// let array2 = [...array]
-let larray = getRandomLettersArray(10);
+// console.log(mergeSort(array));
+// mergeSort(array)
 
-// console.log(`origi: ${array}`);
-// console.log(`inset: ${bubbleSort(array)}`);
-console.log(`origi: ${array2}`);
-console.log(`inset: ${insertionSort(array2)}`);
-console.log(larray);
-console.log(bubbleSort(larray));
+let a1 = [2, 0];
+let a2 = [1, 3];
 
-// let arr2 = [1, 2, 3, 4, 6]
-//
-// console.log(arr2);
-//
-// arr2.splice(4, 0, 5)
-// console.log(arr2);
+
+// merge(a1, a2)
+// console.log(merge(a1, a2));
+// console.log(merge([2], [0]));
+// console.log([...array.splice(0, 2)]);
+// console.log([...array].splice(0, 2));
+// console.log([...array].splice(2));
+// console.log(mergeSort(array));n
+console.log(mergeSort(array2));

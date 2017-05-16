@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -148,7 +148,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 // Insertion Sort
 function insertionSort(array) {
-
   for (var i = 0, pivot = 1; i < array.length - 1; i++, pivot++) {
     var index = pivot;
 
@@ -174,6 +173,51 @@ exports.default = insertionSort;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+// Merge Sort
+function merge(array1, array2) {
+  for (var i = 0; i < array1.length; i++) {
+    for (var j = 0; j < array2.length; j++) {
+      if (array1[j] > array2[i]) {
+        var _ref = [array2[i], array1[j]];
+        array1[j] = _ref[0];
+        array2[i] = _ref[1];
+      }
+    }
+  }
+  array1.push.apply(array1, _toConsumableArray(array2));
+  return array1;
+}
+
+function mergeSort(array) {
+  var divider = Math.floor(array.length / 2);
+  var firstSplit = [].concat(_toConsumableArray(array)).slice(0, divider);
+  var secondSplit = [].concat(_toConsumableArray(array)).slice(divider);
+
+  // console.log(firstSplit);
+  // console.log(secondSplit);
+
+  if (divider === 1) {
+    return merge(firstSplit, secondSplit);
+  }
+
+  return merge(mergeSort(firstSplit), mergeSort(secondSplit));
+}
+
+exports.default = mergeSort;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _getRandomArray = __webpack_require__(1);
 
 var _bubbleSort = __webpack_require__(0);
@@ -184,32 +228,33 @@ var _insertionSort = __webpack_require__(2);
 
 var _insertionSort2 = _interopRequireDefault(_insertionSort);
 
+var _mergeSort = __webpack_require__(3);
+
+var _mergeSort2 = _interopRequireDefault(_mergeSort);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Empty Lines
 console.log('--------------------------------------------------------------------');
 console.log();
 console.log();
+var array = [5, 2, 9, 8, 6, 7];
+var array2 = [2, 5, 6, 9, 8, 7];
 
-// let array = [5, 4, 2, 0, 1, 3];
-var array2 = [5, 4, 2, 0, 1, 3];
-// let array = getRandomArray(10, 100);
-// let array2 = [...array]
+// console.log(mergeSort(array));
+// mergeSort(array)
 
-// console.log(`origi: ${array}`);
-// console.log(`inset: ${bubbleSort(array)}`);
-console.log('origi: ' + array2);
-console.log('inset: ' + (0, _insertionSort2.default)(array2));
-var larray = (0, _getRandomArray.getRandomLettersArray)(10);
-console.log(larray);
-console.log((0, _bubbleSort2.default)(larray));
+var a1 = [2, 0];
+var a2 = [1, 3];
 
-// let arr2 = [1, 2, 3, 4, 6]
-//
-// console.log(arr2);
-//
-// arr2.splice(4, 0, 5)
-// console.log(arr2);
+// merge(a1, a2)
+// console.log(merge(a1, a2));
+// console.log(merge([2], [0]));
+// console.log([...array.splice(0, 2)]);
+// console.log([...array].splice(0, 2));
+// console.log([...array].splice(2));
+// console.log(mergeSort(array));n
+console.log((0, _mergeSort2.default)(array2));
 
 /***/ })
 /******/ ]);

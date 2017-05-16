@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import bubbleSort from '../scripts/bubbleSort';
+import insertionSort from '../scripts/insertionSort';
 import { getRandomNumbersArray, getRandomLettersArray } from '../scripts/getRandomArray';
 
-describe('Bubble Sort', () => {
+describe('Insertion Sort', () => {
   it('Should be a function', () => {
-    expect(bubbleSort).to.be.function;
+    expect(insertionSort).to.be.function;
   });
 
   // Numbers
@@ -12,28 +12,28 @@ describe('Bubble Sort', () => {
     let numbers = getRandomNumbersArray(5, 10);
     let sorted = [...numbers].sort((a, b) => a - b);
 
-    expect(bubbleSort(numbers)).to.deep.equal(sorted);
+    expect(insertionSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should sort large numbers arrays', () => {
+  it('Should sort large number arrays', () => {
     let numbers = getRandomNumbersArray(10000, 100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
-    expect(bubbleSort(numbers)).to.deep.equal(sorted);
+    expect(insertionSort(numbers)).to.deep.equal(sorted);
   })
 
   it('Should move min number to front', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let min = Math.min(...numbers);
 
-    expect(bubbleSort(numbers)[0]).to.be.equal(min);
+    expect(insertionSort(numbers)[0]).to.be.equal(min);
   })
 
   it('Should move max number to the last position', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let max = Math.max(...numbers);
 
-    expect(bubbleSort(numbers)[numbers.length - 1]).to.be.equal(max);
+    expect(insertionSort(numbers)[numbers.length - 1]).to.be.equal(max);
   })
 
   // Letters
@@ -41,27 +41,27 @@ describe('Bubble Sort', () => {
     let letters = getRandomLettersArray(10);
     let sorted = [...letters].sort();
 
-    expect(bubbleSort(letters)).to.deep.equal(sorted);
+    expect(insertionSort(letters)).to.deep.equal(sorted);
   })
 
   it('Should sort large letter arrays', () => {
     let letters = getRandomLettersArray(10000);
     let sorted = [...letters].sort();
 
-    expect(bubbleSort(letters)).to.deep.equal(sorted);
+    expect(insertionSort(letters)).to.deep.equal(sorted);
   })
 
   it('Should move min letter to front', () => {
     let letter = getRandomNumbersArray(10, 10);
     let min = Math.min(...letter);
 
-    expect(bubbleSort(letter)[0]).to.be.equal(min);
+    expect(insertionSort(letter)[0]).to.be.equal(min);
   })
 
   it('Should move max number to the last position', () => {
     let letter = getRandomNumbersArray(10, 10);
     let max = Math.max(...letter);
 
-    expect(bubbleSort(letter)[letter.length - 1]).to.be.equal(max);
+    expect(insertionSort(letter)[letter.length - 1]).to.be.equal(max);
   })
 });

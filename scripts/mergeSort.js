@@ -25,11 +25,15 @@ function mergeSort(array) {
   let left = [...array].slice(0, divider);
   let right = [...array].slice(divider);
 
-  if (array.length < 2) {
-    return array;
+  if (left.length > 1) {
+    left = mergeSort(left)
   }
 
-  return merge(mergeSort(left), mergeSort(right));
+  if (right.length > 1) {
+    right = mergeSort(right)
+  }
+
+  return merge(left, right);
 }
 
 export default mergeSort;

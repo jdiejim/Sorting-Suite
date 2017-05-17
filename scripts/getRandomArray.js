@@ -1,5 +1,5 @@
-function getRandomNumber(max) {
-  return Math.floor(Math.random() * (max + 1));
+function getRandomNumber(max, min = 0) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function getRandomLetter() {
@@ -22,11 +22,11 @@ function getRandomLetter() {
   return letter[getRandomNumber(51)];
 }
 
-export function getRandomNumbersArray(length, max) {
+export function getRandomNumbersArray(length, max, min = 0) {
   let array = [];
 
   for (let i = 0; i < length; i++) {
-    array.push(getRandomNumber(max));
+    array.push(getRandomNumber(max, min));
   }
   return array;
 }

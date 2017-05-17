@@ -1,29 +1,35 @@
-// Merge Sort
-function merge(array1, array2) {
-  for (let i = 0; i < array1.length; i++) {
-    for (let j = 0; j < array2.length; j++) {
-      if (array1[j] > array2[i]) {
-        [array1[j], array2[i]] = [array2[i], array1[j]]
-      }
+function merge(left, right) {
+  let array = [];
+
+  while (left.length && right.length) {
+    if ( left[0] <= right[0]) {
+      array.push(left.shift())
+    } else {
+      array.push(right.shift())
     }
   }
-  array1.push(...array2)
-  return array1;
+
+  while (left.length) {
+    array.push(left.shift())
+  }
+
+  while (right.length) {
+    array.push(right.shift())
+  }
+
+  return array;
 }
 
 function mergeSort(array) {
   let divider = Math.floor(array.length / 2);
-  let firstSplit = [...array].slice(0, divider);
-  let secondSplit = [...array].slice(divider);
+  let left = [...array].slice(0, divider);
+  let right = [...array].slice(divider);
 
-  // console.log(firstSplit);
-  // console.log(secondSplit);
-
-  if (divider === 1) {
-    return merge(firstSplit, secondSplit);
+  if (array.length < 2) {
+    return array;
   }
 
-  return merge(mergeSort(firstSplit), mergeSort(secondSplit));
+  return merge(mergeSort(left), mergeSort(right));
 }
 
 export default mergeSort;

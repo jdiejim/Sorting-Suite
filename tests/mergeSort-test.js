@@ -9,14 +9,21 @@ describe('Merge Sort', () => {
 
   // Numbers
   it('Should sort array of numbers', () => {
-    let numbers = getRandomNumbersArray(5, 10);
+    let numbers = getRandomNumbersArray(10, 10);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(mergeSort(numbers)).to.deep.equal(sorted);
   })
 
-  it.skip('Should sort large number arrays', () => {
+  it('Should sort large number arrays', () => {
     let numbers = getRandomNumbersArray(10000, 100);
+    let sorted = [...numbers].sort((a, b) => a - b);
+
+    expect(mergeSort(numbers)).to.deep.equal(sorted);
+  })
+
+  it('Should sort number arrays with negative numbers', () => {
+    let numbers = getRandomNumbersArray(10, 100, -100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(mergeSort(numbers)).to.deep.equal(sorted);
@@ -44,7 +51,7 @@ describe('Merge Sort', () => {
     expect(mergeSort(letters)).to.deep.equal(sorted);
   })
 
-  it.skip('Should sort large letter arrays', () => {
+  it('Should sort large letter arrays', () => {
     let letters = getRandomLettersArray(10000);
     let sorted = [...letters].sort();
 

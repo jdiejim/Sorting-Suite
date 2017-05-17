@@ -16,7 +16,14 @@ describe('Insertion Sort', () => {
   })
 
   it('Should sort large number arrays', () => {
-    let numbers = getRandomNumbersArray(10000, 100);
+    let numbers = getRandomNumbersArray(15000, 100);
+    let sorted = [...numbers].sort((a, b) => a - b);
+
+    expect(insertionSort(numbers)).to.deep.equal(sorted);
+  })
+
+  it('Should sort number arrays with negative numbers', () => {
+    let numbers = getRandomNumbersArray(10, 100, -100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(insertionSort(numbers)).to.deep.equal(sorted);

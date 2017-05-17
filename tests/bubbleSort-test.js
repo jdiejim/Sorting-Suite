@@ -22,6 +22,13 @@ describe('Bubble Sort', () => {
     expect(bubbleSort(numbers)).to.deep.equal(sorted);
   })
 
+  it('Should sort number arrays with negative numbers', () => {
+    let numbers = getRandomNumbersArray(10, 100, -100);
+    let sorted = [...numbers].sort((a, b) => a - b);
+
+    expect(bubbleSort(numbers)).to.deep.equal(sorted);
+  })
+
   it('Should move min number to front', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let min = Math.min(...numbers);

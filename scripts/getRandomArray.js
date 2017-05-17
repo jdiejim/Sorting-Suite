@@ -39,3 +39,18 @@ export function getRandomLettersArray(length) {
   }
   return array;
 }
+
+export function getRandomAlphaNumArray(length, max, min = 0) {
+  let array = [];
+
+  for (let i = 0; i < length; i++) {
+    let rand = getRandomNumber(1);
+
+    if (rand === 1) {
+      array.push(getRandomLetter());
+    } else {
+      array.push(getRandomNumber(max, min));
+    }
+  }
+  return array;
+}

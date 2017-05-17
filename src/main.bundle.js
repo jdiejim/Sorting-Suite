@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -106,38 +106,9 @@ exports.default = bubbleSort;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-// Insertion Sort
-function insertionSort(array) {
-  for (var i = 0, pivot = 1; i < array.length - 1; i++, pivot++) {
-    var index = pivot;
-
-    for (var j = pivot - 1; j >= 0; j--) {
-      if (array[index] < array[j]) {
-        var _ref = [array[index], array[j]];
-        array[j] = _ref[0];
-        array[index] = _ref[1];
-
-        index--;
-      }
-    }
-  }
-  return array;
-}
-
-exports.default = insertionSort;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.getRandomNumbersArray = getRandomNumbersArray;
 exports.getRandomLettersArray = getRandomLettersArray;
+exports.getRandomAlphaNumArray = getRandomAlphaNumArray;
 function getRandomNumber(max) {
   var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
@@ -170,6 +141,53 @@ function getRandomLettersArray(length) {
   return array;
 }
 
+function getRandomAlphaNumArray(length, max) {
+  var min = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+  var array = [];
+
+  for (var i = 0; i < length; i++) {
+    var rand = getRandomNumber(1);
+
+    if (rand === 1) {
+      array.push(getRandomLetter());
+    } else {
+      array.push(getRandomNumber(max, min));
+    }
+  }
+  return array;
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// Insertion Sort
+function insertionSort(array) {
+  for (var i = 0, pivot = 1; i < array.length - 1; i++, pivot++) {
+    var index = pivot;
+
+    for (var j = pivot - 1; j >= 0; j--) {
+      if (array[index] < array[j]) {
+        var _ref = [array[index], array[j]];
+        array[j] = _ref[0];
+        array[index] = _ref[1];
+
+        index--;
+      }
+    }
+  }
+  return array;
+}
+
+exports.default = insertionSort;
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -181,73 +199,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _insertionSort = __webpack_require__(1);
-
-var _insertionSort2 = _interopRequireDefault(_insertionSort);
-
-var _bubbleSort = __webpack_require__(0);
-
-var _bubbleSort2 = _interopRequireDefault(_bubbleSort);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-// // Merge Sort
-// function merge(array1, array2) {
-//   // for (let i = 0; i <= array1.length; i++) {
-//   //   for (let j = 0; j <= array2.length; j++) {
-//   //     if (array1[j] > array2[i]) {
-//   //       [array1[j], array2[i]] = [array2[i], array1[j]]
-//   //     }
-//   //   }
-//   // }
-//   // array1.push(...array2)
-//   console.log(`first: ${array1} second: ${array2}`);
-//   return array1;
-// }
-
-// function merge(array1, array2) {
-//   array1.push(...array2)
-//   let length = array1.length;
-//   let array = [];
-//
-//   for (let i = 0; i < length; i++) {
-//     let min = Math.min(...array1)
-//     let index = array1.indexOf(min)
-//
-//     array[i] = min
-//     array1.splice(index, 1);
-//   }
-//   return array
-// }
-
-// for (let i = 0, pivot = 1; i < array.length - 1; i++, pivot++) {
-//   let index = pivot;
-//
-//   for (let j = pivot - 1; j >= 0; j--) {
-//     if (array[index] < array[j]) {
-//       [array[j], array[index]] = [array[index], array[j]];
-//       index--;
-//     }
-//   }
-// }
-// return array
-//
-// function merge(array1, array2) {
-//   let array = [];
-//   let len = array1.length;
-//
-//   for (let i = 0; i < len; i++) {
-//     if (array1[0] > array2[i]) {
-//       array.push(array2[i]);
-//     } else {
-//       array.push(array1[i]);
-//     }
-//     array1.shift()
-//   }
-//   return array;
-// }
 
 function merge(left, right) {
   var array = [];
@@ -276,93 +228,16 @@ function mergeSort(array) {
   var left = [].concat(_toConsumableArray(array)).slice(0, divider);
   var right = [].concat(_toConsumableArray(array)).slice(divider);
 
-  if (array.length < 2) {
-    return array;
+  if (left.length > 1) {
+    left = mergeSort(left);
   }
 
-  return merge(mergeSort(left), mergeSort(right));
-}
+  if (right.length > 1) {
+    right = mergeSort(right);
+  }
 
-// function mergeSort(array) {
-//   let swapped = true;
-//   let divider = Math.floor(array.length / 2);
-//   let left = [...array].slice(0, divider);
-//   let right = [...array].slice(divider);
-//
-//   console.log(`first: ${left} second: ${right}`);
-//
-//   if (array.length > 1 && left.length > 1) {
-//     left = mergeSort(left)
-//   }
-//
-//   if (array.length > 1 && right.length > 1) {
-//     right = mergeSort(right)
-//   }
-//
-//
-//   // console.log('Before: L ', left, 'R ', right);
-//
-//   // console.log(right.length + 'right');
-//   // console.log(left.length + 'left');
-//
-//   // console.log(`before left: ${left}`);
-//   // console.log(`before right: ${right}`);
-//
-//   // if (right.length > left.length) {
-//   //   leftLength = right.length;
-//   //   rightLength = left.length;
-//   // }
-//
-//   // while (swapped) {
-//   //   let sorted = [];
-//   //
-//   //   swapped = false;
-//   //   if (left[0] > right[0]) {
-//   //     [left[0], right[0]] = [right[0], left[0]];
-//   //     swapped = true;
-//   //   }
-//
-//
-//     // for (let i = 0; i < left.length; i++) {
-//     //   for (let j = 0; j < right.length; j++) {
-//     //     if (left[i] > right[j]) {
-//     //       [left[i], right[j]] = [right[j], left[i]];
-//     //       swapped = true;
-//     //     }
-//     //   }
-//     // }
-//
-//
-//
-//
-//   // if (left[0] > right[0]) {
-//   //   [left[0], right[0]] = [right[0], left[0]];
-//   // }
-//
-//   // console.log('After: L ', left, 'R ', right);
-//
-//   // console.log(`merged: ${array}`);
-//   // console.log(`swapped left: ${left}`);
-//   // console.log(`swapped right: ${right}`);
-//   // merge(left, right);
-//   array = merge(left, right)
-//   console.log(array);
-//   console.log();
-//   return array;
-//
-//
-//   // let divider = Math.floor(array.length / 2);
-//   // let firstSplit = [...array].slice(0, divider);
-//   // let secondSplit = [...array].slice(divider);
-//   //
-//   // console.log(`first: ${firstSplit} second: ${secondSplit}`);
-//   //
-//   // if (divider === 1) {
-//   //   return merge(firstSplit, secondSplit);
-//   // }
-//   //
-//   // return mergeSort(merge(firstSplit, secondSplit));
-// }
+  return merge(left, right);
+}
 
 exports.default = mergeSort;
 
@@ -373,19 +248,62 @@ exports.default = mergeSort;
 "use strict";
 
 
-var _getRandomArray = __webpack_require__(2);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function quickSort(array) {
+  var small = [];
+  var large = [];
+  var pivot = array[0];
+
+  console.log('pivot: ' + pivot);
+  console.log('array: ' + array);
+
+  if (array.length < 2) {
+    return array;
+  }
+
+  for (var i = 1; i < array.length; i++) {
+    pivot > array[i] ? small.push(array[i]) : large.push(array[i]);
+  }
+
+  console.log('small: ' + small);
+  console.log('large: ' + large);
+  console.log('--------------');
+  console.log();
+
+  return [].concat(_toConsumableArray(quickSort(small)), [pivot], _toConsumableArray(quickSort(large)));
+}
+
+exports.default = quickSort;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _getRandomArray = __webpack_require__(1);
 
 var _bubbleSort = __webpack_require__(0);
 
 var _bubbleSort2 = _interopRequireDefault(_bubbleSort);
 
-var _insertionSort = __webpack_require__(1);
+var _insertionSort = __webpack_require__(2);
 
 var _insertionSort2 = _interopRequireDefault(_insertionSort);
 
 var _mergeSort = __webpack_require__(3);
 
 var _mergeSort2 = _interopRequireDefault(_mergeSort);
+
+var _quickSort = __webpack_require__(4);
+
+var _quickSort2 = _interopRequireDefault(_quickSort);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -394,47 +312,30 @@ console.log('-------------------------------------------------------------------
 console.log();
 console.log();
 
-var array = [5, 9, 2, 8, 6, 7, 10, 11];
-// let numbers = getRandomNumbersArray(10, 10);
-var numbers = [10, 8, 3, 7, 10, 2, 1, 0, 2, 7];
-var original = [].concat(numbers);
-var sorted = [].concat(numbers).sort(function (a, b) {
-  return a - b;
-});
-
-console.log('original: ' + original);
-console.log('merged:   ' + (0, _mergeSort2.default)(numbers));
-console.log('sorted:   ' + sorted);
-
-// console.log(arr2);
-
-// function merge(array1, array2) {
-//   array1.push(...array2)
-//   let length = array1.length;
-//   let array = [];
+// let numbers = [9, 8, 5, 2, 1, 6, 3];
+// let sortedNumbers = [...numbers].sort((a, b) => a - b);
+// let toBeSorted = [...numbers];
+// let expected = [1, 2, 3, 5, 8, 6, 9];
 //
-//   for (let i = 0; i < length; i++) {
-//     let min = Math.min(...array1)
-//     let index = array1.indexOf(min)
+// console.log(`original: `);
+// console.log(sortedNumbers);
+// console.log(`expected: ${expected}`);
+// console.log(quickSort(toBeSorted));
+// console.log(toString(quickSort(toBeSorted)) === toString(expected));
 //
-//     array[i] = min
-//     array1.splice(index, 1);
-//   }
-//   return array
+// function toString(array) {
+//   return array.reduce((string, e) => {
+//     return `${string}${e}`
+//   }, '')
 // }
 
-var q = [2];
-var y = [0];
+var prac = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3];
+console.log((0, _quickSort2.default)(prac));
 
-function merge(a1, a2) {
-  var array = [];
+// let array = [1, 2, 3, 4, 5];
 
-  return array;
-}
-
-// console.log(merge(q, y));
-console.log(merge(q, y));
-// console.log(merge([5, 9, 2, 8], [6, 7, 10, 11]));
+// let newArray = [...array]
+//             [1, 2, 3, 4, 5]
 
 /***/ })
 /******/ ]);

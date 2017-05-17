@@ -65,7 +65,7 @@ describe('Merge Sort', () => {
     expect(mergeSort(letter)[0]).to.be.equal(min);
   })
 
-  it('Should move max number to the last position', () => {
+  it('Should move max letter to the last position', () => {
     let letter = getRandomNumbersArray(10, 10);
     let max = Math.max(...letter);
 

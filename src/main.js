@@ -1,51 +1,35 @@
-import { getRandomNumbersArray, getRandomLettersArray } from '../scripts/getRandomArray';
+import { getRandomNumbersArray, getRandomLettersArray, getRandomAlphaNumArray } from '../scripts/getRandomArray';
 import bubbleSort from '../scripts/bubbleSort';
 import insertionSort from '../scripts/insertionSort';
 import mergeSort from '../scripts/mergeSort';
+import quickSort from '../scripts/quickSort';
 
 //Empty Lines
 console.log('--------------------------------------------------------------------');
 console.log();
 console.log();
 
-
-let array = [ 5, 9, 2, 8, 6, 7, 10, 11 ];
-// let numbers = getRandomNumbersArray(10, 10);
-let numbers = [10,8,3,7,10,2,1,0,2,7]
-let original = [...numbers]
-let sorted = [...numbers].sort((a, b) => a - b);
-
-console.log(`original: ${original}`);
-console.log(`merged:   ${mergeSort(numbers)}`);
-console.log(`sorted:   ${sorted}`);
-
-
-// console.log(arr2);
-
-// function merge(array1, array2) {
-//   array1.push(...array2)
-//   let length = array1.length;
-//   let array = [];
+// let numbers = [9, 8, 5, 2, 1, 6, 3];
+// let sortedNumbers = [...numbers].sort((a, b) => a - b);
+// let toBeSorted = [...numbers];
+// let expected = [1, 2, 3, 5, 8, 6, 9];
 //
-//   for (let i = 0; i < length; i++) {
-//     let min = Math.min(...array1)
-//     let index = array1.indexOf(min)
+// console.log(`original: `);
+// console.log(sortedNumbers);
+// console.log(`expected: ${expected}`);
+// console.log(quickSort(toBeSorted));
+// console.log(toString(quickSort(toBeSorted)) === toString(expected));
 //
-//     array[i] = min
-//     array1.splice(index, 1);
-//   }
-//   return array
+// function toString(array) {
+//   return array.reduce((string, e) => {
+//     return `${string}${e}`
+//   }, '')
 // }
 
-let q = [2];
-let y = [0];
+let prac = [3,1,4,1,5,9,2,6,5,3]
+console.log(quickSort(prac));
 
-function merge(a1, a2) {
-  let array = [];
-  
-  return array;
-}
+// let array = [1, 2, 3, 4, 5];
 
-// console.log(merge(q, y));
-console.log(merge(q, y));
-// console.log(merge([5, 9, 2, 8], [6, 7, 10, 11]));
+// let newArray = [...array]
+//             [1, 2, 3, 4, 5]

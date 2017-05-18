@@ -22,19 +22,19 @@ function getRandomLetter() {
   return letter[getRandomNumber(51)];
 }
 
-export function getRandomNumbersArray(length, max, min = 0) {
+export function getRandomNumbersArray(n, max, min = 0) {
   let array = [];
 
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < n; i++) {
     array.push(getRandomNumber(max, min));
   }
   return array;
 }
 
-export function getRandomLettersArray(length) {
+export function getRandomLettersArray(n) {
   let array = [];
 
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < n; i++) {
     array.push(getRandomLetter());
   }
   return array;

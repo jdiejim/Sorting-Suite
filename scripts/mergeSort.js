@@ -1,5 +1,5 @@
 function merge(left, right) {
-  let array = [];
+  const array = [];
 
   while (left.length && right.length) {
     if (left[0] <= right[0]) {
@@ -21,7 +21,7 @@ function merge(left, right) {
 }
 
 function mergeSort(array) {
-  let divider = Math.floor(array.length / 2);
+  const divider = Math.floor(array.length / 2);
   let left = [...array].slice(0, divider);
   let right = [...array].slice(divider);
 

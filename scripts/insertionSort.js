@@ -14,18 +14,3 @@ function insertionSort(array) {
 }
 
 export default insertionSort;
-
-
-// insert array , ringht index, value
-//
-// for var j = right
-// j>= 0 && array[j > value
-// j
-//
-// then
-//
-// array[j+1] = array[j
-//
-// for i normal
-//
-// insert array i -1 array [i]]

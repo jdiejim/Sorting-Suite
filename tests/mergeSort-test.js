@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import mergeSort from '../scripts/mergeSort';
 import { getRandomNumbersArray, getRandomLettersArray } from '../scripts/getRandomArray';
+import mergeSort from '../scripts/mergeSort';
 
 describe('Merge Sort', () => {
   it('Should be a function', () => {
@@ -15,28 +15,28 @@ describe('Merge Sort', () => {
     expect(mergeSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should sort large number arrays', () => {
-    let numbers = getRandomNumbersArray(10000, 100);
+  it('Should sort large array of numbers', () => {
+    let numbers = getRandomNumbersArray(141000, 100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(mergeSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should sort number arrays with negative numbers', () => {
+  it('Should sort arrays with negative numbers', () => {
     let numbers = getRandomNumbersArray(10, 100, -100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(mergeSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should move min number to front', () => {
+  it('Should move min number to first position of the array', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let min = Math.min(...numbers);
 
     expect(mergeSort(numbers)[0]).to.be.equal(min);
   })
 
-  it('Should move max number to the last position', () => {
+  it('Should move max number to the last position of the array', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let max = Math.max(...numbers);
 
@@ -51,24 +51,10 @@ describe('Merge Sort', () => {
     expect(mergeSort(letters)).to.deep.equal(sorted);
   })
 
-  it('Should sort large letter arrays', () => {
-    let letters = getRandomLettersArray(10000);
+  it('Should sort large array of letters', () => {
+    let letters = getRandomLettersArray(141000);
     let sorted = [...letters].sort();
 
     expect(mergeSort(letters)).to.deep.equal(sorted);
-  })
-
-  it('Should move min letter to front', () => {
-    let letter = getRandomNumbersArray(10, 10);
-    let min = Math.min(...letter);
-
-    expect(mergeSort(letter)[0]).to.be.equal(min);
-  })
-
-  it('Should move max letter to the last position', () => {
-    let letter = getRandomNumbersArray(10, 10);
-    let max = Math.max(...letter);
-
-    expect(mergeSort(letter)[letter.length - 1]).to.be.equal(max);
   })
 });

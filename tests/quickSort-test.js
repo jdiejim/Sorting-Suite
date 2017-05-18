@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import quickSort from '../scripts/quickSort';
 import { getRandomNumbersArray, getRandomLettersArray } from '../scripts/getRandomArray';
+import quickSort from '../scripts/quickSort';
 
 describe('Quick Sort', () => {
   it('Should be a function', () => {
@@ -15,28 +15,28 @@ describe('Quick Sort', () => {
     expect(quickSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should sort large number arrays', () => {
-    let numbers = getRandomNumbersArray(10000, 100);
+  it('Should sort large array of numbers', () => {
+    let numbers = getRandomNumbersArray(134000, 100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(quickSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should sort number arrays with negative numbers', () => {
+  it('Should sort arrays with negative numbers', () => {
     let numbers = getRandomNumbersArray(10, 100, -100);
     let sorted = [...numbers].sort((a, b) => a - b);
 
     expect(quickSort(numbers)).to.deep.equal(sorted);
   })
 
-  it('Should move min number to front', () => {
+  it('Should move min number to first position of the array', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let min = Math.min(...numbers);
 
     expect(quickSort(numbers)[0]).to.be.equal(min);
   })
 
-  it('Should move max number to the last position', () => {
+  it('Should move max number to the last position of the array', () => {
     let numbers = getRandomNumbersArray(10, 10);
     let max = Math.max(...numbers);
 
@@ -51,24 +51,10 @@ describe('Quick Sort', () => {
     expect(quickSort(letters)).to.deep.equal(sorted);
   })
 
-  it('Should sort large letter arrays', () => {
-    let letters = getRandomLettersArray(14000);
+  it('Should sort large array of letters', () => {
+    let letters = getRandomLettersArray(50000);
     let sorted = [...letters].sort();
 
     expect(quickSort(letters)).to.deep.equal(sorted);
-  })
-
-  it('Should move min letter to front', () => {
-    let letter = getRandomNumbersArray(10, 10);
-    let min = Math.min(...letter);
-
-    expect(quickSort(letter)[0]).to.be.equal(min);
-  })
-
-  it('Should move max letter to the last position', () => {
-    let letter = getRandomNumbersArray(10, 10);
-    let max = Math.max(...letter);
-
-    expect(quickSort(letter)[letter.length - 1]).to.be.equal(max);
   })
 });
